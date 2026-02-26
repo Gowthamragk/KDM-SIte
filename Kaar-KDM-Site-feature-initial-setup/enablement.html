@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KDM | PMO Overview</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+
+  >
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     FIXED HEADER (HERO + RIBBON)
+===================================================== -->
+<div class="fixed-header">
+
+  <!-- HERO -->
+  <div class="hero-wrapper">
+
+    <header class="global-header">
+      <img src="assets/logo1.png" alt="KaarTech Logo" class="logo">
+
+      <div class="header-right">
+        <a href="https://www.instagram.com/kaar_tech" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/kaar-tech" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.kaartech.com" target="_blank" aria-label="KaarTech Website">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="hero-content">
+      <h1>
+        <span class="coe-line">CENTER OF EXCELLENCE</span>
+        <span class="pm-line">PROJECT MANAGEMENT</span>
+      </h1>
+    </div>
+
+  </div>
+
+  <!-- RIBBON -->
+  <nav class="offerings-ribbon">
+    <a href="index.html" class="active">Home</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="templates.html">SOPs,Templates & Samples</a>
+    <a href="insights.html">Project Casestudies</a>
+    <a href="project-audits.html">Project Audits</a>
+    <a href="managed-services.html">Managed Services</a>
+    <a href="org-structure.html">GPMO Org Structure</a>
+    <a href="knowledge-base.html">Knowledge Base</a>
+     <a href="enablement.html" class="active">Governance Enablement</a>
+  </nav>
+
+</div>
+
+<section class="page-content enablement-page">
+
+  <!-- INTRO -->
+  <div class="enablement-intro">
+    <h1>Project Governance Enablement</h1>
+    <p>Select the project type to view applicable governance guidance</p>
+  </div>
+
+  <!-- PROJECT TYPE -->
+  <div class="project-type">
+    <h2>Choose Project Type</h2>
+
+    <div class="project-type-grid">
+      <div class="project-card" data-project="sap">
+        <i class="fa-solid fa-diagram-project"></i>
+        <h3>SAP Project</h3>
+        <p>Activate-based SAP delivery governance</p>
+      </div>
+
+      <div class="project-card" data-project="nonsap">
+        <i class="fa-solid fa-sitemap"></i>
+        <h3>Non-SAP Project</h3>
+        <p>Assurity (RUP) based delivery governance</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOVERNANCE OPTIONS -->
+  <div class="governance-sections" id="governanceSections">
+
+    <div class="gov-card" data-section="howto">
+      <i class="fa-solid fa-book"></i>
+      <h3>How To</h3>
+      <p>Step-by-step guidance to execute governance effectively</p>
+    </div>
+
+    <div class="gov-card" data-section="critical">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <h3>Critical Aspects</h3>
+      <p>Key checkpoints, risks, and mandatory controls</p>
+    </div>
+
+    <div class="gov-card" data-section="tools">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <h3>Tools</h3>
+      <p>Templates, trackers, and governance utilities</p>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  const projectCards = document.querySelectorAll(".project-card");
+  const govWrapper = document.getElementById("governanceSections");
+  const govCards = document.querySelectorAll(".gov-card");
+
+  projectCards.forEach(clickedCard => {
+    clickedCard.addEventListener("click", () => {
+      const type = clickedCard.dataset.project;
+
+      // Reset all cards (IMPORTANT: allow switching)
+      projectCards.forEach(card => {
+        card.classList.remove("active", "faded");
+      });
+
+      // Apply active + fade logic
+      clickedCard.classList.add("active");
+      projectCards.forEach(card => {
+        if (card !== clickedCard) {
+          card.classList.add("faded");
+        }
+      });
+
+      govWrapper.style.display = "flex";
+
+      // Show / hide governance cards
+      govCards.forEach(card => {
+        const section = card.dataset.section;
+
+        if (type === "sap") {
+          card.style.display =
+            (section === "howto" || section === "critical") ? "block" : "none";
+        }
+
+        if (type === "nonsap") {
+          card.style.display =
+            (section === "howto") ? "block" : "none";
+        }
+      });
+
+      // Improve spacing dynamically
+      govWrapper.classList.toggle("two-cards", type === "sap");
+      govWrapper.classList.toggle("one-card", type === "nonsap");
+    });
+  });
+
+  // Navigation
+  govCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const section = card.dataset.section;
+
+      if (section === "howto") window.location.href = "howto.html";
+      if (section === "critical") window.location.href = "critical-aspects.html";
+      if (section === "tools") window.location.href = "tools-enablement.html";
+    });
+  });
+</script>
+
+</body>
+</html>

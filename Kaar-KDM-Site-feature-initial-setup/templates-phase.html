@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KDM | PMO Overview</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+
+  >
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     FIXED HEADER (HERO + RIBBON)
+===================================================== -->
+<div class="fixed-header">
+
+  <!-- HERO -->
+  <div class="hero-wrapper">
+
+    <header class="global-header">
+      <img src="assets/logo1.png" alt="KaarTech Logo" class="logo">
+
+      <div class="header-right">
+        <a href="https://www.instagram.com/kaar_tech" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/kaar-tech" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.kaartech.com" target="_blank" aria-label="KaarTech Website">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="hero-content">
+      <h1>
+        <span class="coe-line">CENTER OF EXCELLENCE</span>
+        <span class="pm-line">PROJECT MANAGEMENT</span>
+      </h1>
+    </div>
+
+  </div>
+
+  <!-- RIBBON -->
+  <nav class="offerings-ribbon">
+    <a href="index.html" class="active">Home</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="templates.html">SOPs,Templates & Samples</a>
+    <a href="insights.html">Project Casestudies</a>
+    <a href="project-audits.html">Project Audits</a>
+    <a href="managed-services.html">Managed Services</a>
+    <a href="org-structure.html">GPMO Org Structure</a>
+    <a href="knowledge-base.html">Knowledge Base</a>
+     <a href="enablement.html" class="active">Governance Enablement</a>
+  </nav>
+
+</div>
+
+
+<section class="templates-phase-page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <a class="back-btn" id="backBtn">← Back to Phases</a>
+  </div>
+
+  <!-- GRID -->
+  <div class="template-grid" id="templateGrid"></div>
+
+</section>
+
+<!-- PDF PREVIEW MODAL -->
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-container">
+    <button class="pdf-close" onclick="closePreview()">✕</button>
+    <h2 id="pdfTitle"></h2>
+    <iframe id="pdfFrame"></iframe>
+  </div>
+</div>
+
+<script>
+  /* ----------------------------------------
+     CONFIG – CHANGE ONLY THIS PDF LINK
+  ----------------------------------------- */
+
+  const PROJECT_CHARTER_PDF = "https://kaartechit.sharepoint.com/sites/DeliveryExcellenceGroup/Shared%20Documents/Forms/AllItems.aspx?viewid=d3c99896%2Df253%2D4dec%2Db056%2D956675c43e8b&csf=1&web=1&e=etL9Xv&ovuser=87a25c2a%2D2cb4%2D4c40%2D9cbc%2D5268c0ed1eeb%2Cpbharathi%40kaartech%2Ecom&OR=Teams%2DHL&CT=1762067741240&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTEwMDIxMzgxMSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&CID=8d59d5a1%2Df03e%2D6000%2D1620%2D33264adbf141&cidOR=SPO&FolderCTID=0x012000FFE2E595A8A96B4AA95247ECF7026DCE&id=%2Fsites%2FDeliveryExcellenceGroup%2FShared%20Documents%2FPMO%2F15%20Digital%20%26%20Analytics%20Repository%2FD%26A%20%2D%20Template%20Standardization%2FReference%20Samples%2FBPMN%2D%20Ref%2Epdf&parent=%2Fsites%2FDeliveryExcellenceGroup%2FShared%20Documents%2FPMO%2F15%20Digital%20%26%20Analytics%20Repository%2FD%26A%20%2D%20Template%20Standardization%2FReference%20Samples";
+
+  /* ----------------------------------------
+     PAGE PARAMS
+  ----------------------------------------- */
+
+  const params = new URLSearchParams(window.location.search);
+  const method = params.get("method");
+  document.getElementById("backBtn").href =
+    `templates-list.html?method=${method}`;
+
+  /* ----------------------------------------
+     DATA
+  ----------------------------------------- */
+
+  const DATA = [
+    "Project Charter",
+    "Stakeholder Register",
+    "Business Case",
+    "Feasibility Study",
+    "Inception Plan"
+  ];
+
+  const DOCUMENTS = {
+    "Project Charter": {
+      template: {
+        preview: PROJECT_CHARTER_PDF,
+        download: PROJECT_CHARTER_PDF + "?download=1"
+      },
+      sample: {
+        preview: PROJECT_CHARTER_PDF,
+        download: PROJECT_CHARTER_PDF + "?download=1"
+      }
+    }
+  };
+
+  /* ----------------------------------------
+     RENDER CARDS
+  ----------------------------------------- */
+
+  const grid = document.getElementById("templateGrid");
+  let activeCard = null;
+
+  DATA.forEach(name => {
+    const card = document.createElement("div");
+    card.className = "template-card";
+
+    const doc = DOCUMENTS[name];
+
+    card.innerHTML = `
+      <div class="card-title">${name}</div>
+
+      <div class="card-content">
+
+        <div class="doc-section">
+          <h4>Template</h4>
+          ${doc ? `
+            <button onclick="openPreview('${doc.template.preview}', '${name} – Template')">Preview</button>
+            <a href="https://kaartechit.sharepoint.com/sites/DeliveryExcellenceGroup/Shared%20Documents/Forms/AllItems.aspx?viewid=d3c99896%2Df253%2D4dec%2Db056%2D956675c43e8b&csf=1&web=1&e=etL9Xv&ovuser=87a25c2a%2D2cb4%2D4c40%2D9cbc%2D5268c0ed1eeb%2Cpbharathi%40kaartech%2Ecom&OR=Teams%2DHL&CT=1762067741240&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTEwMDIxMzgxMSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&CID=8d59d5a1%2Df03e%2D6000%2D1620%2D33264adbf141&cidOR=SPO&FolderCTID=0x012000FFE2E595A8A96B4AA95247ECF7026DCE&id=%2Fsites%2FDeliveryExcellenceGroup%2FShared%20Documents%2FPMO%2F15%20Digital%20%26%20Analytics%20Repository%2FD%26A%20%2D%20Template%20Standardization%2FReference%20Samples%2FBPMN%2D%20Ref%2Epdf&parent=%2Fsites%2FDeliveryExcellenceGroup%2FShared%20Documents%2FPMO%2F15%20Digital%20%26%20Analytics%20Repository%2FD%26A%20%2D%20Template%20Standardization%2FReference%20Samples%3Fdownload" target="_blank">
+              <button>Download</button>
+            </a>
+          ` : `<p>Coming soon</p>`}
+        </div>
+
+        <div class="doc-section">
+          <h4>Sample</h4>
+          ${doc ? `
+            <button onclick="openPreview('${doc.sample.preview}', '${name} – Sample')">Preview</button>
+            <a href="${doc.sample.download}" target="_blank">
+              <button>Download</button>
+            </a>
+          ` : `<p>Coming soon</p>`}
+        </div>
+
+      </div>
+    `;
+
+    card.querySelector(".card-title").addEventListener("click", () => {
+      if (activeCard === card) {
+        card.classList.remove("active");
+        activeCard = null;
+        return;
+      }
+
+      document.querySelectorAll(".template-card")
+        .forEach(c => c.classList.remove("active"));
+
+      card.classList.add("active");
+      activeCard = card;
+    });
+
+    grid.appendChild(card);
+  });
+
+  /* ----------------------------------------
+     PREVIEW HANDLERS
+  ----------------------------------------- */
+
+  function openPreview(url, title) {
+    document.getElementById("pdfTitle").textContent = title;
+    document.getElementById("pdfFrame").src = url;
+    document.getElementById("pdfModal").classList.add("show");
+  }
+
+  function closePreview() {
+    document.getElementById("pdfFrame").src = "";
+    document.getElementById("pdfModal").classList.remove("show");
+  }
+</script>
+
+</body>
+</html>

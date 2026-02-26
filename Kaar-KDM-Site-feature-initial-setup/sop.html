@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KDM | SOP</title>
+
+  <!-- SOP CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+<main class="sop-page">
+
+  <!-- HEADER -->
+  <div class="sop-header">
+    <a id="backLink" class="back-btn" href="templates.html">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+    <h1 id="pageTitle">Standard Operating Procedures</h1>
+  </div>
+
+  <!-- SOP LIST -->
+  <section class="sop-list">
+
+    <!-- SOP ITEM -->
+    <div class="sop-item">
+      <div class="sop-card" data-sop="initiation">
+        <h3>SOP – Project Initiation</h3>
+      </div>
+      <div class="sop-intro">
+        Defines the standardized process for project initiation,
+        approvals, and PMO onboarding.
+        <br />
+        <button class="view-btn" onclick="openSOP('initiation')">
+          View SOP
+        </button>
+      </div>
+    </div>
+
+    <div class="sop-item">
+      <div class="sop-card" data-sop="planning">
+        <h3>SOP – Project Planning</h3>
+      </div>
+      <div class="sop-intro">
+        Establishes planning standards for scope, schedule,
+        estimation, and baselines.
+        <br />
+        <button class="view-btn" onclick="openSOP('planning')">
+          View SOP
+        </button>
+      </div>
+    </div>
+
+    <div class="sop-item">
+      <div class="sop-card" data-sop="risk">
+        <h3>SOP – Risk & Issue Management</h3>
+      </div>
+      <div class="sop-intro">
+        Provides a governance framework for identifying,
+        tracking, and mitigating risks and issues.
+        <br />
+        <button class="view-btn" onclick="openSOP('risk')">
+          View SOP
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SOP BLOG VIEW -->
+  <article class="sop-blog" id="sopBlog">
+
+    <div class="blog-header">
+      <h2 id="blogTitle">SOP</h2>
+      <button class="close-btn" onclick="closeSOP()">
+        <i class="fa-solid fa-xmark"></i> Close
+      </button>
+    </div>
+
+    <div class="blog-content">
+      <p>
+        This Standard Operating Procedure (SOP) provides a comprehensive
+        framework to ensure consistency, governance, and compliance
+        across PMO-managed projects.
+      </p>
+
+      <h3>1. Purpose</h3>
+      <p>
+        To define a standardized approach for initiating and governing
+        projects within the organization.
+      </p>
+
+      <h3>2. Scope</h3>
+      <p>
+        Applicable to all delivery projects irrespective of size or model.
+      </p>
+
+      <h3>3. Process Overview</h3>
+      <p>
+        The process begins with a formal request, followed by feasibility
+        analysis, approvals, and onboarding into PMO governance.
+      </p>
+
+      <h3>4. Roles & Responsibilities</h3>
+      <p>
+        Sponsors provide justification, while Project Managers ensure
+        adherence to PMO standards.
+      </p>
+
+      <h3>5. Governance & Reviews</h3>
+      <p>
+        Periodic reviews ensure alignment with strategic objectives
+        throughout the project lifecycle.
+      </p>
+    </div>
+
+  </article>
+
+</main>
+
+<script>
+  const sopCards = document.querySelectorAll(".sop-card");
+  const sopBlog = document.getElementById("sopBlog");
+  const blogTitle = document.getElementById("blogTitle");
+
+  let activeCard = null;
+
+  // Toggle SOP intro on card click
+  sopCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const intro = card.nextElementSibling;
+
+      // If clicking the same open card → close it
+      if (activeCard === card) {
+        intro.style.display = "none";
+        activeCard = null;
+        return;
+      }
+
+      // Close all intros
+      document.querySelectorAll(".sop-intro").forEach(i => {
+        i.style.display = "none";
+      });
+
+      // Open selected intro
+      intro.style.display = "block";
+      activeCard = card;
+    });
+  });
+
+  // Open full SOP blog
+  function openSOP(type) {
+    sopBlog.classList.add("active");
+
+    if (type === "initiation") {
+      blogTitle.textContent = "SOP – Project Initiation";
+    }
+    if (type === "planning") {
+      blogTitle.textContent = "SOP – Project Planning";
+    }
+    if (type === "risk") {
+      blogTitle.textContent = "SOP – Risk & Issue Management";
+    }
+
+    sopBlog.scrollIntoView({ behavior: "smooth" });
+  }
+
+  // Close SOP blog view
+  function closeSOP() {
+    sopBlog.classList.remove("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Methodology context
+  const params = new URLSearchParams(window.location.search);
+  const method = params.get("method");
+  const pageTitle = document.getElementById("pageTitle");
+  const backLink = document.getElementById("backLink");
+
+  if (method) {
+    const label =
+      method === "activate"
+        ? "Activate Methodology"
+        : "Assurity (RUP) Methodology";
+
+    pageTitle.textContent = `SOPs for ${label}`;
+    backLink.href = `templates.html?method=${method}`;
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KDM | PMO Overview</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+
+  >
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     FIXED HEADER (HERO + RIBBON)
+===================================================== -->
+<div class="fixed-header">
+
+  <!-- HERO -->
+  <div class="hero-wrapper">
+
+    <header class="global-header">
+      <img src="assets/logo1.png" alt="KaarTech Logo" class="logo">
+
+      <div class="header-right">
+        <a href="https://www.instagram.com/kaar_tech" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/kaar-tech" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.kaartech.com" target="_blank" aria-label="KaarTech Website">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="hero-content">
+      <h1>
+        <span class="coe-line">CENTER OF EXCELLENCE</span>
+        <span class="pm-line">PROJECT MANAGEMENT</span>
+      </h1>
+    </div>
+
+  </div>
+
+  <!-- RIBBON -->
+  <nav class="offerings-ribbon">
+    <a href="index.html" class="active">Home</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="templates.html">SOPs,Templates & Samples</a>
+    <a href="insights.html">Project Casestudies</a>
+    <a href="project-audits.html">Project Audits</a>
+    <a href="managed-services.html">Managed Services</a>
+    <a href="org-structure.html">GPMO Org Structure</a>
+    <a href="knowledge-base.html">Knowledge Base</a>
+     <a href="enablement.html" class="active">Governance Enablement</a>
+  </nav>
+
+</div>
+
+<!-- ================= PAGE CONTENT ================= -->
+<section class="page-content templates-page">
+
+  <h1 class="page-title">SOPs, Templates & Samples</h1>
+  <p class="page-subtitle">Select an option to proceed</p>
+
+<div class="methodology-choice" id="main-options">
+
+  <a class="method-box sop-main" id="sop-card" href="sop.html">
+    <h2>SOP</h2>
+    <p>Standard Operating Procedures</p>
+  </a>
+
+  <div class="method-box" id="templates-main">
+    <h2>Templates & Samples</h2>
+    <p>Delivery templates by methodology & phase</p>
+  </div>
+
+</div>
+
+
+  <!-- ===== LEVEL 2 : METHODOLOGIES ===== -->
+<div class="methodology-choice" id="methodology-section" style="display:none;">
+
+  <div class="method-box" data-method="activate">
+    <h2>Activate Methodology</h2>
+  </div>
+
+  <div class="method-box" data-method="assurity">
+    <h2>Assurity (RUP)</h2>
+  </div>
+
+</div>
+
+
+</section>
+
+<script>
+  const mainOptions = document.getElementById("main-options");
+  const sopCard = document.getElementById("sop-card");
+  const templatesMain = document.getElementById("templates-main");
+  const methodologySection = document.getElementById("methodology-section");
+  const methodBoxes = document.querySelectorAll("[data-method]");
+
+  function resetView() {
+    mainOptions.classList.remove("focus-sop", "focus-templates");
+    methodologySection.style.display = "none";
+  }
+
+  sopCard.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mainOptions.classList.remove("focus-templates");
+    mainOptions.classList.add("focus-sop");
+    methodologySection.style.display = "none";
+  });
+
+  templatesMain.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mainOptions.classList.remove("focus-sop");
+    mainOptions.classList.add("focus-templates");
+    methodologySection.style.display = "grid";
+  });
+
+  methodBoxes.forEach(box => {
+    box.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const method = box.dataset.method;
+      window.location.href = `templates-list.html?method=${method}`;
+    });
+  });
+
+  document.addEventListener("click", resetView);
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

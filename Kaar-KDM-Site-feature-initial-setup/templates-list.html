@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KDM | PMO Overview</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+
+  >
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     FIXED HEADER (HERO + RIBBON)
+===================================================== -->
+<div class="fixed-header">
+
+  <!-- HERO -->
+  <div class="hero-wrapper">
+
+    <header class="global-header">
+      <img src="assets/logo1.png" alt="KaarTech Logo" class="logo">
+
+      <div class="header-right">
+        <a href="https://www.instagram.com/kaar_tech" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/kaar-tech" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.kaartech.com" target="_blank" aria-label="KaarTech Website">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="hero-content">
+      <h1>
+        <span class="coe-line">CENTER OF EXCELLENCE</span>
+        <span class="pm-line">PROJECT MANAGEMENT</span>
+      </h1>
+    </div>
+
+  </div>
+
+  <!-- RIBBON -->
+  <nav class="offerings-ribbon">
+    <a href="index.html" class="active">Home</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="templates.html">Templates</a>
+    <a href="insights.html">Insights</a>
+    <a href="project-audits.html">Project Audits</a>
+    <a href="managed-services.html">Managed Services</a>
+    <a href="org-structure.html">GPMO Org Structure</a>
+    <a href="knowledge-base.html">Knowledge Base</a>
+     <a href="enablement.html" class="active">Governance Enablement</a>
+  </nav>
+
+</div>
+
+<section class="page-content templates-list-page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <a id="backLink" class="back-btn">← Back</a>
+    <h1 id="pageTitle" class="page-title">Templates & Samples</h1>
+  </div>
+
+  <!-- PHASE CARDS -->
+  <div class="phase-grid" id="phaseGrid"></div>
+
+</section>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const method = params.get("method");
+
+  const pageTitle = document.getElementById("pageTitle");
+  const backLink = document.getElementById("backLink");
+  const phaseGrid = document.getElementById("phaseGrid");
+
+  const PHASES = {
+    activate: ["Prepare", "Explore", "Realize", "Deploy", "Hypercare"],
+    assurity: ["Inception", "Elaboration", "Construction", "Transition"]
+  };
+
+  if (!method || !PHASES[method]) {
+    pageTitle.textContent = "Invalid Methodology";
+    backLink.style.display = "none";
+  } else {
+    pageTitle.textContent = `Templates & Samples – ${method.toUpperCase()}`;
+    backLink.href = `templates.html`;
+
+    PHASES[method].forEach(phase => {
+      const card = document.createElement("a");
+      card.className = "phase-box";
+      card.href = `templates-phase.html?method=${method}&phase=${phase}`;
+
+      card.innerHTML = `
+        <div class="phase-title">${phase}</div>
+        <div class="phase-subtitle">View templates & samples</div>
+      `;
+
+      phaseGrid.appendChild(card);
+    });
+  }
+</script>
+
+</body>
+</html>

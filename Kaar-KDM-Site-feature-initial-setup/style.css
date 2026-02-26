@@ -1,0 +1,3811 @@
+/* =====================================================
+   RESET & BASE
+===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #fffbfb;
+  background: #930808;
+}
+
+/* =====================================================
+   FIXED HEADER (HERO + RIBBON)
+===================================================== */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+/* Push page content below fixed header */
+.page-content {
+padding-top: 180px; 
+
+  background-image: url("assets/homebg.jpg");
+
+  /* IMPORTANT */
+  background-size: contain;       /* keeps original quality */
+  background-position: center top;      /* fills empty space */
+
+}
+
+
+
+/* =====================================================
+   HERO (WHITE BACKGROUND)
+===================================================== */
+/* =====================================================
+   HERO WITH BANNER BACKGROUND
+===================================================== */
+.hero-wrapper {
+  position: relative;
+  height: 140px; /* slightly taller for banner */
+  
+  /* Banner image */
+  background-image: url("assets/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;       /* fills width without repeating */
+  background-position: center;  /* keeps curves centered */
+
+  /* Fallback */
+  background-color: #ffffff;
+}
+
+/* ❌ REMOVE overlay completely */
+.hero-wrapper::after {
+  display: none;
+}
+
+/* Header row */
+.global-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+
+/* Logo */
+.logo {
+  height: 80px;
+  width:300px;
+}
+
+/* Icons */
+.header-right a {
+  color: #7b1e24; /* maroon for visibility on white */
+  margin-left: 18px;
+  font-size: 18px;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.header-right a:hover {
+  color: #4e1216;
+  transform: scale(1.15);
+}
+
+/* Hero title */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  font-family: "Libre Baskerville", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #7b1e24; /* maroon text on white */
+}
+
+.coe-line {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.pm-line {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+
+/* =====================================================
+   RIBBON
+===================================================== */
+.offerings-ribbon {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 14px 20px;
+  background: #3e3d3d;
+}
+
+.offerings-ribbon a {
+
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+.offerings-ribbon a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.offerings-ribbon a:hover::after {
+  width: 100%;
+}
+
+/* =====================================================
+   PM IMAGE CAROUSEL
+===================================================== */
+.pm-carousel {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scrollCarousel 15s linear infinite;
+}
+
+.carousel-track img {
+  height: 150px;
+  margin-right: 20px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+@keyframes scrollCarousel {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* =====================================================
+   PAGE CONTENT
+===================================================== */
+.container {
+  padding: 20px;
+}
+
+h2 {
+  color: #7b1e24;
+}
+
+
+/* =====================================================
+   VISION & MISSION – FINAL POLISHED VERSION
+===================================================== */
+
+.vm-row {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
+/* Card */
+.split-card {
+  display: flex;
+  width: 100%;
+  min-height: 280px;
+  border: 3px solid #7b1e24;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: all 0.35s ease;
+}
+
+/* Hover polish */
+.split-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.25);
+}
+
+/* ================= TEXT SIDE ================= */
+.vm-text {
+  width: 150%;
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Section title */
+.vm-text h3 {
+  font-size: 28px;
+  font-weight: 900;
+  color: #7b1e24;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* Underline below title */
+.vm-text h3::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: #7b1e24;
+  margin-top: 10px;
+}
+
+/* Body text – darker & thicker */
+.vm-text p {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.75;
+  color: #1f1f1f;
+  margin-top: 18px;
+}
+
+/* ================= IMAGE SIDE ================= */
+.vm-image {
+  width: 95%;
+  background-repeat: no-repeat;
+  background-position: right center;   /* 🔑 right aligned */
+  background-size: 87% auto;           /* 🔑 perfect fit */
+  background-color: #ffffff;
+  padding-right: 20px;                 /* slight breathing space */
+}
+
+/* Vision image */
+.vision-bg {
+  background-image: url("assets/vision3.webp");
+   background-size: 60% auto;
+}
+
+/* Mission image */
+.mission-bg {
+  background-image: url("assets/miss.png");
+   background-size: 50% auto;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .split-card {
+    flex-direction: column;
+  }
+
+  .vm-text,
+  .vm-image {
+    width: 100%;
+  }
+
+  .vm-image {
+    height: 240px;
+    background-position: center;
+    background-size: contain;
+    padding-right: 0;
+  }
+}
+
+
+/* =====================================================
+   TESTIMONIAL MARQUEE
+===================================================== */
+.testimonial-section {
+  padding: 20px 0;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.testimonial-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin-bottom: 40px;
+}
+
+.testimonial-marquee {
+  overflow: hidden;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: testimonialScroll 40s linear infinite;
+}
+
+.testimonial-marquee:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+.testimonial-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 520px;
+  background: #1f2a2e;
+  color: #ffffff;
+  padding: 28px 34px;
+  border-radius: 18px;
+  border: 2px solid #7b1e24;
+}
+
+.testimonial-card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid #7b1e24;
+}
+
+@keyframes testimonialScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+  background: #5a040a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+
+
+/* =====================================================
+   METHODOLOGY PAGE – CLEAN FULL WIDTH
+===================================================== */
+
+.methodology-page {
+  padding: 240px 40px 120px; /* clears fixed header */
+
+  background-image: url("assets/methobg2.png");
+
+  /* 🔑 keeps original image size & clarity */
+  background-size: contain;
+
+  /* center without scaling */
+  background-position: center top;
+
+  /* fallback color */
+  background-color: #ffffff;
+
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+
+/* Title */
+.methodology-title {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #980b0b;
+  margin-bottom: 70px;
+}
+
+.methodology-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #7b1e24;
+  margin: 18px auto 0;
+  border-radius: 3px;
+}
+
+/* ================= GRID ================= */
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= CARD ================= */
+.methodology-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  padding-bottom: 30px;
+
+  /* ✅ WHITE BORDER */
+  border: 2px solid #ffffff;
+
+  /* modern shadow */
+  box-shadow: 0 14px 34px rgba(0,0,0,0.15);
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+/* Sticky-note folded corner */
+.methodology-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    #7b1e24 50%
+  );
+}
+
+/* Hover effect */
+.methodology-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 26px 50px rgba(123,30,36,0.35);
+}
+
+/* ================= IMAGE ================= */
+.methodology-image {
+  height: 120px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 20px;
+}
+
+/* REMOVE old divider */
+.methodology-image::after {
+  display: none;
+}
+
+/* ================= BODY ================= */
+.methodology-body {
+  padding: 10px 28px 28px;
+  text-align: center;
+}
+
+.methodology-body h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin-bottom: 14px;
+}
+
+.methodology-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 18px;
+}
+
+.methodology-body a {
+  display: inline-block;
+  font-weight: 700;
+  color: #7b1e24;
+  text-decoration: none;
+}
+
+.methodology-body a:hover {
+  text-decoration: underline;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .methodology-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .methodology-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =====================================================
+   SAP ACTIVATE – BLOG STYLE (FINAL)
+===================================================== */
+
+/* ================= PAGE WRAPPER ================= */
+
+.activate-blog-page {
+  padding: 160px 40px 120px;
+  padding-top: 200px; 
+  min-height: 100vh;
+  background: url("assets/homebg.jpg") center / cover no-repeat;
+}
+
+/* ================= BACK LINK ================= */
+
+.activate-blog-page .back-link {
+  display: inline-block;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+}
+
+.activate-blog-page .back-link:hover {
+  text-decoration: underline;
+}
+
+/* ================= TITLE ================= */
+
+.activate-blog-page .page-title {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.activate-blog-page .page-subtitle {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+}
+
+/* ================= BLOG CONTAINER ================= */
+
+.blog-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 60px;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= HEADINGS ================= */
+
+.blog-content h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin: 30px 0 14px;
+}
+
+.blog-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 24px 0 10px;
+}
+
+/* ================= TEXT ================= */
+
+.blog-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+/* ================= LISTS ================= */
+
+.blog-content ul {
+  padding-left: 22px;
+  margin-bottom: 22px;
+}
+
+.blog-content li {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.blog-content,
+.blog-content p,
+.blog-content li {
+  color: #333333;   /* 🔥 Explicit dark text */
+}
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .activate-blog-page {
+    padding: 140px 20px 80px;
+  }
+
+  .activate-blog-page .page-title {
+    font-size: 34px;
+  }
+
+  .blog-content {
+    padding: 40px 24px;
+  }
+}
+/* ================= OFFICIAL SAP LINKS SECTION ================= */
+
+.official-links {
+  margin: 50px 0;
+  padding: 40px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f7f7f7, #ffffff);
+  border-left: 6px solid #7b1e24;
+}
+
+.official-links-content h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #7b1e24;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.official-links-content p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.official-links-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Primary button */
+.official-links-actions .btn-primary {
+  background: #7b1e24;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.official-links-actions .btn-primary:hover {
+  background: #5e151a;
+  transform: translateY(-2px);
+}
+
+/* Secondary button */
+.official-links-actions .btn-secondary {
+  background: transparent;
+  color: #7b1e24;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: 2px solid #7b1e24;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.official-links-actions .btn-secondary:hover {
+  background: #7b1e24;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .official-links {
+    padding: 28px;
+  }
+
+  .official-links-actions {
+    flex-direction: column;
+  }
+}
+
+/* =====================================================
+   TEMPLATES PAGE – SCOPED STYLES ONLY
+===================================================== */
+
+.templates-page {
+  padding: 180px 60px 150px; /* clears fixed header */
+  min-height: 100vh;
+
+  /* 🔁 EASY TO CHANGE BACKGROUND */
+  background-color: #f7f7f7; /* fallback */
+  background-image: url("assets/homebg.jpg"); /* 👈 image I’ll give you */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+   
+  text-align: center;
+}
+
+/* ---------- PAGE TITLE ---------- */
+.templates-page .page-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.templates-page .page-subtitle {
+  font-size: 18px;
+  color: #fffbfb;
+  margin-bottom: 60px;
+}
+
+/* =====================================================
+   METHODOLOGY SELECTION CARDS
+===================================================== */
+
+.methodology-choice {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+.method-box {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 80px 60px;
+  cursor: pointer;
+
+  border: 2px solid transparent;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Unique visual identity */
+.method-box::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 22px;
+  height: 22px;
+  background: #7b1e24;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  opacity: 0.9;
+}
+
+.method-box h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin-bottom: 10px;
+}
+
+.method-box p {
+  font-size: 16px;
+  color: #444;
+}
+
+.method-box:hover {
+  transform: translateY(-6px);
+  border-color: #7b1e24;
+  box-shadow: 0 28px 60px rgba(123,30,36,0.35);
+}
+
+/* =====================================================
+   PHASE GRID
+===================================================== */
+
+
+
+
+
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+
+  /* 🔑 THIS IS THE FIX */
+  justify-content: center;
+
+  /* Optional: keeps row tight */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+@media (max-width: 1100px) {
+  .phase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .phase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
+  gap: 40px;
+
+  justify-content: center;   /* 🔥 horizontal centering */
+  align-items: center;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   METHOD SELECTION – FOCUS MODE
+===================================================== */
+
+/* When a method is active */
+.templates-page.method-active .method-box {
+  opacity: 0.35;
+  transform: scale(0.96);
+  transition: all 0.3s ease;
+}
+
+.templates-page.method-active .method-box.active {
+  opacity: 1;
+  transform: scale(1.05);
+  z-index: 5;
+  box-shadow: 0 30px 70px rgba(123,30,36,0.45);
+}
+
+
+/* Hide all phase sections by default */
+.phase-section {
+  display: none;
+}
+
+/* Show only active phase section */
+.phase-section.active {
+  display: block;
+}
+
+/* Slight backdrop effect */
+.templates-page.method-active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
+}
+
+/* Keep content above overlay */
+.methodology-choice,
+.phase-section {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .methodology-choice {
+    grid-template-columns: 1fr;
+  }
+
+  .templates-page {
+    padding: 140px 20px 80px;
+  }
+}
+
+/* =====================================================
+   ACTION CARDS
+===================================================== */
+
+.action-section {
+  display: none;
+  margin: 80px auto;
+  max-width: 900px;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.action-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 60px 40px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.action-card i {
+  font-size: 36px;
+  color: #761b21;
+  margin-bottom: 20px;
+}
+
+.action-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #7b1e24;
+}
+
+.action-card:hover {
+  transform: translateY(-8px);
+  border-color: #7b1e24;
+  box-shadow: 0 30px 60px rgba(123,30,36,0.4);
+}
+
+/* =====================================================
+   SOP SECTION
+===================================================== */
+
+.sop-section {
+  display: none;
+  max-width: 1100px;
+  margin: 80px auto;
+}
+
+.sop-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.sop-list li {
+  background: #ffffff;
+  padding: 18px 24px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #7b1e24;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
+}
+
+.sop-list li:hover {
+  background: #7b1e24;
+  color: #ffffff;
+}
+
+#sopViewer {
+  width: 100%;
+  height: 600px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+/* =====================================================
+   METHODOLOGY FOCUS MODE
+===================================================== */
+
+.templates-page.method-active .method-box {
+  opacity: 0.35;
+  transform: scale(0.94);
+  transition: all 0.35s ease;
+}
+
+.method-box.active {
+  opacity: 1 !important;
+  transform: scale(1.08);
+  z-index: 5;
+  box-shadow: 0 35px 70px rgba(123,30,36,0.5);
+}
+
+.method-box.inactive {
+  pointer-events: auto;
+  filter: grayscale(20%);
+}
+/* =====================================================
+   ACTION CARDS – SECONDARY SIZE
+===================================================== */
+
+.action-section {
+  margin-top: 70px;
+}
+
+.action-grid {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.action-card {
+  padding: 40px 30px;
+  border-radius: 16px;
+}
+
+.action-card i {
+  font-size: 30px;
+}
+
+.action-card h3 {
+  font-size: 20px;
+}
+.templates-page.method-active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
+}
+
+.methodology-choice,
+.action-section,
+.sop-section {
+  position: relative;
+  z-index: 2;
+}
+
+.sop-main,
+.sop-main p,
+.sop-main h2 {
+  text-decoration: none;
+}
+
+.sop-main:hover {
+  text-decoration: none;
+}
+
+/* ===== FOCUS MODE WHEN TEMPLATES IS CLICKED ===== */
+
+#main-options.focus-templates .sop-main {
+  opacity: 0.35;
+  transform: scale(0.95);
+  filter: grayscale(30%);
+  pointer-events: none; /* optional: prevents accidental click */
+}
+
+#main-options.focus-templates #templates-main {
+  opacity: 1;
+  transform: scale(1.08);
+  z-index: 5;
+  box-shadow: 0 35px 70px rgba(123,30,36,0.5);
+  border-color: #7b1e24;
+}
+
+
+
+/* ================= TEMPLATE LIST PAGE ================= */
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+.templates-list-page {
+  padding: 140px 60px 120px;
+  background: #f7f7f7;
+  min-height: 100vh;
+  background: url("assets/homebg.jpg") center / cover no-repeat;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.page-header h1 {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 100px; 
+  margin-bottom: 20px;
+  padding: 20px 30px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* =====================================================
+   GRID – 5 SQUARE CARDS
+===================================================== */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   TEMPLATE CARD (SQUARE)
+===================================================== */
+.template-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.card-header {
+  background: #7b1e24;
+  color: #ffffff;
+  font-weight: 800;
+  text-align: center;
+  padding: 24px 12px;
+  cursor: pointer;
+}
+
+/* BODY (HIDDEN) */
+.card-body {
+  display: none;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.template-card.active .card-body {
+  display: block;
+}
+
+/* SECTIONS STACKED */
+.section {
+  margin-bottom: 18px;
+}
+
+.section h4 {
+  margin-bottom: 8px;
+  color: #7b1e24;
+}
+
+.section button {
+  margin-right: 10px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #7b1e24;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.section button:last-child {
+  background: #555;
+}
+
+/* =====================================================
+   PREVIEW MODAL
+===================================================== */
+.preview-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preview-modal.show {
+  display: flex;
+}
+
+.preview-content {
+  background: #ffffff;
+  padding: 40px;
+  max-width: 600px;
+  border-radius: 14px;
+  position: relative;
+}
+
+.close-preview {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 1200px) {
+  .template-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .template-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+/* =====================================================
+   PHASE CARD TEXT – ALWAYS VISIBLE
+===================================================== */
+
+
+
+.templates-list-page .phase-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.templates-list-page .phase-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+  color: #ffffff;
+}
+
+.templates-list-page .phase-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =====================================================
+   PHASE GRID
+===================================================== */
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto 70px;
+}
+/* ================================
+   FOCUS STATES – SOP / TEMPLATES
+================================ */
+
+#main-options.focus-templates .sop-main {
+  opacity: 0.35;
+  transform: scale(0.95);
+  filter: grayscale(30%);
+}
+
+#main-options.focus-sop #templates-main {
+  opacity: 0.35;
+  transform: scale(0.95);
+  filter: grayscale(30%);
+}
+
+#main-options.focus-templates #templates-main,
+#main-options.focus-sop .sop-main {
+  opacity: 1;
+  transform: scale(1.08);
+  z-index: 5;
+  box-shadow: 0 35px 70px rgba(123,30,36,0.45);
+}
+
+
+/* =====================================================
+   TEMPLATE CARDS
+===================================================== */
+.phase-title {
+  text-align: center;
+  margin: 60px 0 30px;
+  color: #7b1e24;
+}
+
+.template-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  margin: 0 auto 40px;
+  max-width: 1000px;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+.template-card h3 {
+  margin-bottom: 8px;
+  color: #7b1e24;
+}
+
+.template-desc {
+  margin-bottom: 24px;
+  color: #444;
+}
+
+/* =====================================================
+   SPLIT TEMPLATE / SAMPLE
+===================================================== */
+.split-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.half {
+  background: #f9f9f9;
+  padding: 22px;
+  border-radius: 12px;
+}
+
+.half h4 {
+  margin-bottom: 8px;
+  color: #7b1e24;
+}
+
+.actions {
+  margin-top: 14px;
+}
+
+.actions button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #7b1e24;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.actions button:last-child {
+  background: #555;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+  .templates-list-page {
+    padding: 120px 20px 100px;
+  }
+
+  .split-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================
+   PROJECT AUDITS – BLOG STYLE (IMPROVED)
+===================================================== */
+
+.audits-blog {
+  padding-top: 160px; /* FIXED HEADER OFFSET */
+  padding-bottom: 120px;
+  background:
+    url("assets/audits.png") center / cover no-repeat;
+}
+
+/* Page title */
+.audit-title {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  text-align: center;
+  color: #9b1d1d;
+}
+
+.audit-title h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.audit-title p {
+  font-size: 19px;
+  opacity: 0.95;
+}
+
+/* Blog article */
+.audit-article {
+  max-width: 1100px;   /* ⬅ increased width */
+  margin: auto;
+  background: #fffdfd;
+  color: #333;
+  padding: 70px 80px;  /* ⬅ more breathing space */
+  border-radius: 20px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+}
+
+/* Headings */
+.audit-article h2 {
+  color: #7b1e24;
+  margin-top: 50px;
+  margin-bottom: 14px;
+  font-size: 26px;
+}
+
+/* Text */
+.audit-article p {
+  font-size: 17px;     /* ⬅ easier reading */
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.audit-article ul {
+  padding-left: 24px;
+  margin-top: 10px;
+}
+
+.audit-article li {
+  margin-bottom: 10px;
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+/* =====================================================
+   AUDIT RESOURCES SECTION
+===================================================== */
+
+.audit-resources {
+  margin-top: 70px;
+  padding-top: 40px;
+  border-top: 2px solid #b5b0b0;
+}
+
+.audit-resources h2 {
+  font-size: 26px;
+  color: #7b1e24;
+  margin-bottom: 22px;
+}
+
+/* KTERN Tool Link */
+.audit-tool-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 34px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.audit-tool-link i {
+  color: #7b1e24;
+}
+
+.audit-tool-link a {
+  color: #7b1e24;
+  text-decoration: none;
+}
+
+.audit-tool-link a:hover {
+  text-decoration: underline;
+}
+
+/* Samples */
+.audit-samples h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+  color: #7b1e24;
+}
+
+.sample-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.sample-item span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sample-item a {
+  background: #7b1e24;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sample-item a:hover {
+  background: #65171c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sample-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+/* =====================================================
+   AUDIT RESOURCES – WHITE CARD FIX
+===================================================== */
+
+.audit-resources {
+  margin-top: 80px;
+}
+
+.audit-resources-card {
+  background: #ffffff;
+  padding: 40px 46px;
+  border-radius: 18px;
+  box-shadow: 0 18px 36px rgba(0,0,0,0.18);
+}
+
+/* Headings */
+.audit-resources-card h2 {
+  font-size: 26px;
+  color: #7b1e24;
+  margin-bottom: 24px;
+}
+
+/* Tool link */
+.audit-tool-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #7b1e24;
+}
+
+.audit-tool-link a {
+  color: #7b1e24;
+  text-decoration: none;
+}
+
+.audit-tool-link a:hover {
+  text-decoration: underline;
+}
+
+/* Samples */
+.audit-samples h3 {
+  font-size: 20px;
+  margin-bottom: 18px;
+  color: #7b1e24;
+}
+
+.sample-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f6f6f6;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.sample-item span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.sample-item a {
+  background: #7b1e24;
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sample-item a:hover {
+  background: #65171c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .audit-resources-card {
+    padding: 28px;
+  }
+
+  .sample-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+
+/* =====================================================
+   MANAGED SERVICES – BLOG STYLE
+===================================================== */
+
+.managed-blog {
+  padding-top: 160px;
+  padding-bottom: 120px;
+  background: 
+    url("assets/homebg.jpg") center / cover no-repeat;
+}
+
+/* Page title */
+.managed-title {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.managed-title h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.managed-title p {
+  font-size: 19px;
+  opacity: 0.95;
+}
+
+/* Blog article */
+.managed-article {
+  max-width: 1100px;
+  margin: auto;
+  background: #ffffff;
+  color: #333;
+  padding: 70px 80px;
+  border-radius: 20px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+}
+
+/* Headings */
+.managed-article h2 {
+  color: #7b1e24;
+  margin-top: 50px;
+  margin-bottom: 14px;
+  font-size: 26px;
+}
+
+/* Text */
+.managed-article p {
+  font-size: 17px;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.managed-article ul {
+  padding-left: 24px;
+  margin-top: 10px;
+}
+
+.managed-article li {
+  margin-bottom: 10px;
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+/* ================= VIEW DOCUMENT PLACEHOLDER ================= */
+
+.pdf-view-cta {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.pdf-view-cta button {
+  background: #7b1e24;
+  color: #ffffff;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 32px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 28px rgba(123,30,36,0.45);
+}
+
+.pdf-view-cta button:hover {
+  background: #65171c;
+}
+
+/* =====================================================
+   BASE
+===================================================== */
+body {
+  margin: 0;
+  background: #f5f6f8;
+  color: #222;
+}
+
+
+.sop-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px 120px;
+  background:url("assets/");
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.sop-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sop-header h1 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #7b1e24;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 2px solid #7b1e24;
+  color: #7b1e24;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.back-btn:hover {
+  color: #872222;
+}
+
+/* Back to Templates button fix */
+.templates-list-page .back-btn {
+  background: #ffffff;
+  color: #7b1e24;
+  border: 2px solid #7b1e24;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.templates-list-page .back-btn:hover {
+  background: #7b1e24;
+  color: #ffffff;
+}
+.templates-list-page .phase-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 260px;   /* fixed card width */
+  gap: 28px;
+
+  justify-content: center;    /* 🔥 centers the row */
+  justify-items: center;
+
+  margin: 0 auto;
+}
+.phase-box {
+  width: 260px;
+}
+
+.methodology-choice {
+  position: relative;
+  z-index: 5;
+}
+
+.method-box {
+  pointer-events: auto;
+}
+
+
+/* =====================================================
+   SOP LIST
+===================================================== */
+.sop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sop-card {
+  background: #7b1e24;
+  color: #fff;
+  padding: 26px 34px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.sop-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(123,30,36,0.45);
+}
+
+/* =====================================================
+   INTRO SECTION
+===================================================== */
+.sop-intro {
+  display: none;
+  background: #ffffff;
+  padding: 26px 34px;
+  border-radius: 0 0 14px 14px;
+}
+
+.view-btn {
+  margin-top: 16px;
+  padding: 10px 18px;
+  background: #7b1e24;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =====================================================
+   SOP BLOG
+===================================================== */
+.sop-blog {
+  display: none;
+  margin-top: 80px;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 14px;
+  line-height: 1.8;
+}
+
+.sop-blog.active {
+  display: block;
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.blog-header h2 {
+  color: #7b1e24;
+}
+
+.close-btn {
+  padding: 8px 14px;
+  border: none;
+  background: #7b1e24;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+  .sop-page {
+    padding: 60px 20px 100px;
+  }
+
+  .sop-blog {
+    padding: 30px;
+  }
+}
+
+/* =====================================================
+   KNOWLEDGE BASE
+===================================================== */
+
+.knowledge-page {
+  padding-top: 160px;
+  padding-bottom: 120px;
+  background: linear-gradient(
+      rgba(123, 30, 36, 0.85),
+      rgba(123, 30, 36, 0.85)
+    ),
+    url("assets/audits.png") center / cover no-repeat;
+}
+
+/* Title */
+.knowledge-title {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.knowledge-title h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.knowledge-title p {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* Grid */
+.knowledge-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* Card */
+.knowledge-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.knowledge-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+
+/* Icon */
+.knowledge-card i {
+  font-size: 42px;
+  color: #7b1e24;
+  margin-bottom: 18px;
+}
+
+/* Title */
+.knowledge-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #7b1e24;
+}
+
+/* Text */
+.knowledge-card p {
+  font-size: 15.5px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* Video badge */
+.kb-type {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 14px;
+  background: #7b1e24;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+.kb-type i {
+  font-size: 14px;
+  margin-right: 6px;
+  color: #ffffff;
+}
+/* =====================================================
+   LESSONS LEARNED – PAGE
+===================================================== */
+
+.lessons-page {
+  min-height: 100vh;
+  padding: 180px 80px 150px;
+  background: url(assets/ll.png);
+}
+
+/* Page title */
+.page-title {
+  text-align: center;
+  color: #791a1a;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 90px;
+}
+
+/* =====================================================
+   CARD GRID
+===================================================== */
+
+.card-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* =====================================================
+   CARD BASE
+===================================================== */
+
+.ll-card {
+  width: 380px;
+  min-height: 350px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+/* =====================================================
+   HEADER (IMAGE + ICON + TITLE)
+===================================================== */
+
+.ll-header {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 28px;
+}
+
+/* Top image band */
+.ll-image {
+  width: 100%;
+  height: 130px;
+
+  /* 🔥 DISTINCT COLOR BAND */
+  background: linear-gradient(
+    135deg,
+    #8e333b,     /* very light maroon */
+    #9c1f28
+  );
+
+  border-bottom: 1px solid rgba(244, 244, 244, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image itself */
+.ll-image img {
+  max-height: 90px;
+  max-width: 85%;
+  object-fit: contain;
+}
+
+/* Icon */
+.ll-icon {
+  width: 56px;
+  height: 56px;
+  margin-top: 20px;
+  opacity: 0.95;
+}
+
+/* Title */
+.ll-header h3 {
+  margin-top: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #812424;
+}
+
+/* =====================================================
+   DETAILS (EXPANDABLE)
+===================================================== */
+
+.ll-details {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 34px;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+}
+
+.ll-details p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  color: #712626;
+}
+
+/* =====================================================
+   ACTIVE CARD
+===================================================== */
+
+.ll-card.active {
+  width: 440px;
+  min-height: 560px;
+  box-shadow: 0 35px 70px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+.ll-card.active .ll-details {
+  max-height: 500px;
+  padding: 24px 34px 34px;
+}
+
+/* Dim others */
+.card-row.has-active .ll-card:not(.active) {
+  opacity: 0.45;
+  transform: scale(0.92);
+  filter: blur(0.3px);
+}
+
+/* =====================================================
+   DOWNLOAD BUTTON
+===================================================== */
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 22px;
+  background: #7b1e24;
+  color: #ffffff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.download-btn:hover {
+  background: #5f1519;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .lessons-page {
+    padding: 140px 24px 100px;
+  }
+
+  .page-title {
+    font-size: 34px;
+    margin-bottom: 60px;
+  }
+
+  .ll-card,
+  .ll-card.active {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+/* =====================================================
+   CASE STUDIES – PAGE
+===================================================== */
+
+.case-page {
+  min-height: 100vh;
+  padding: 180px 80px 150px;
+  background:url(assets/ll.png);
+}
+
+.page-title {
+  text-align: center;
+  color: #7c2929;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 90px;
+}
+
+/* Grid */
+.card-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Card */
+.cs-card {
+  width: 380px;
+  min-height: 350px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.cs-header {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 28px;
+}
+
+/* Image section */
+.cs-image {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(135deg, #8a2830, #942a31);
+  border-bottom: 1px solid rgba(123,30,36,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-image img {
+  max-height: 100px;
+  max-width: 100%;
+}
+
+/* Icon */
+.cs-icon {
+  width: 70px;
+  height: 70px;
+  margin-top: 20px;
+}
+
+/* Title */
+.cs-header h3 {
+  margin-top: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #7b1e24;
+}
+
+/* Details */
+.cs-details {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 34px;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+}
+
+.cs-details p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  color: #333;
+}
+
+/* Active */
+.cs-card.active {
+  width: 440px;
+  min-height: 560px;
+  box-shadow: 0 35px 70px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+.cs-card.active .cs-details {
+  max-height: 500px;
+  padding: 24px 34px 34px;
+}
+
+/* Dim others */
+.card-row.has-active .cs-card:not(.active) {
+  opacity: 0.45;
+  transform: scale(0.92);
+  filter: blur(0.3px);
+}
+
+
+
+/* =====================================================
+   PROJECT GOVERNANCE ENABLEMENT
+===================================================== */
+
+.enablement-page {
+  padding: 180px 40px 120px;
+  background: url("assets/homebg.jpg") center / cover no-repeat;
+  min-height: 100vh;
+}
+
+/* ================= INTRO ================= */
+
+.enablement-intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+.enablement-intro h1 {
+  font-size: 44px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.enablement-intro p {
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 1.7;
+}
+
+/* ================= PROJECT TYPE ================= */
+
+.project-type h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+
+
+
+.project-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 50px 30px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.project-card i {
+  font-size: 42px;
+  color: #7b1e24;
+  margin-bottom: 14px;
+}
+
+.project-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 15px;
+  color: #333;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(123,30,36,0.4);
+}
+
+/* ================= GOVERNANCE SECTIONS ================= */
+
+.governance-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+  justify-content: center;   /* ✅ THIS CENTERS THE CARDS */
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto 100px;
+}
+
+
+.gov-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 36px 26px;
+  text-align: center;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+  transition: all 0.3s ease;
+}
+
+.gov-card i {
+  font-size: 34px;
+  color: #7b1e24;
+  margin-bottom: 12px;
+}
+
+.gov-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin-bottom: 10px;
+}
+
+.gov-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.gov-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px rgba(123,30,36,0.35);
+}
+
+/* ================= ENABLED BANNER ================= */
+
+.enabled-banner {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.enabled-banner i {
+  font-size: 48px;
+  color: #7b1e24;
+  margin-bottom: 12px;
+}
+
+.enabled-banner h2 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #7b1e24;
+  margin-bottom: 10px;
+}
+
+.enabled-banner p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Disabled look initially */
+.enabled-banner.disabled {
+  opacity: 0.4;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .project-type-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .governance-sections {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .governance-sections {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Completed governance section */
+.gov-card.completed {
+  border: 2px solid #7b1e24;
+  background: #fff7f7;
+}
+
+.gov-card.completed::after {
+  content: "✓ Completed";
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #7b1e24;
+}
+
+/* Enabled banner active */
+.enabled-banner.active {
+  opacity: 1;
+  background: linear-gradient(135deg, #7b1e24, #9c2c32);
+  color: #ffffff;
+}
+
+.enabled-banner.active i,
+.enabled-banner.active h2,
+.enabled-banner.active p {
+  color: #ffffff;
+}
+
+
+
+
+/* =====================================================
+   🔒 FINAL OVERRIDE – TEMPLATES PHASE PAGE ONLY
+   (DO NOT MOVE THIS UP)
+===================================================== */
+
+.templates-phase-page .template-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* CARD BASE */
+.templates-phase-page .template-card {
+  all: unset; /* 🔥 clears earlier conflicts */
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;   /* perfect square */
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* HEADER */
+.templates-phase-page .template-card .card-header {
+  background: #7b1e24;
+  color: #ffffff;
+  font-weight: 800;
+  text-align: center;
+  padding: 22px 12px;
+  flex-shrink: 0;
+}
+
+/* BODY */
+.templates-phase-page .template-card .card-body {
+  display: none;
+  padding: 20px;
+}
+
+/* OPEN STATE */
+.templates-phase-page .template-card.active {
+  aspect-ratio: auto;
+}
+
+.templates-phase-page .template-card.active .card-body {
+  display: block;
+}
+
+/* STACKED SECTIONS */
+.templates-phase-page .section {
+  margin-bottom: 18px;
+}
+
+.templates-phase-page .section h4 {
+  color: #7b1e24;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.templates-phase-page .section button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background: #7b1e24;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.templates-phase-page .section button:last-child {
+  background: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1300px) {
+  .templates-phase-page .template-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .templates-phase-page .template-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =====================================================
+   TEMPLATES PHASE – FINAL FIX
+===================================================== */
+
+.templates-phase-page {
+  padding: 160px 60px;
+  min-height: 100vh;
+  background: #f4f4f4;
+}
+
+/* HEADER */
+.templates-phase-page .page-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.templates-phase-page .back-btn {
+  padding: 10px 20px;
+  border: 2px solid #7b1e24;
+  color: #7b1e24;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* GRID */
+.templates-phase-page .template-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.templates-phase-page .template-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+/* TITLE – CENTERED */
+.templates-phase-page .card-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #7b1e24;
+  color: #ffffff;
+  font-weight: 800;
+  text-align: center;
+  padding: 20px;
+}
+
+/* CONTENT */
+.templates-phase-page .card-content {
+  display: none;
+  padding: 20px;
+}
+
+.templates-phase-page .template-card.active {
+  aspect-ratio: auto;
+}
+
+.templates-phase-page .template-card.active .card-content {
+  display: block;
+}
+
+/* SECTIONS */
+.templates-phase-page .doc-section {
+  margin-bottom: 20px;
+}
+
+.templates-phase-page .doc-section h4 {
+  color: #7b1e24;
+  margin-bottom: 8px;
+}
+
+.templates-phase-page .doc-section button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background: #7b1e24;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.templates-phase-page .doc-section button:last-child {
+  background: #555;
+}
+
+/* =====================================================
+   PDF-LIKE PREVIEW MODAL
+===================================================== */
+
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pdf-modal.show {
+  display: flex;
+}
+
+.pdf-container {
+  background: #ffffff;
+  width: 70%;
+  max-height: 80vh;
+  padding: 40px;
+  border-radius: 12px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.pdf-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pdf-page {
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .templates-phase-page .template-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .templates-phase-page .template-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================
+   FIX: Always show template-list card text
+===================================================== */
+
+.templates-list-page .action-card p {
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* =====================================================
+   FIX: Force template-list card text ABOVE overlay
+===================================================== */
+
+.templates-list-page .action-card {
+  position: relative;
+}
+
+/* overlay stays below */
+.templates-list-page .action-card::before {
+  z-index: 1;
+}
+
+/* =====================================================
+   FIX: Template-list cards visible (white cards)
+===================================================== */
+
+/* =====================================================
+   FIX: Template-list cards visible (maroon cards)
+===================================================== */
+
+.templates-list-page .action-card {
+  background: #7b1e24 !important;
+}
+
+.templates-list-page .action-card p {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 16px;
+}
+/* =====================================================
+
+
+
+/* =====================================================
+   ✅ FINAL CLEAN PHASE CARD STYLES (SINGLE SOURCE)
+===================================================== */
+
+.templates-list-page .phase-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px;
+  justify-content: center;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.templates-list-page .phase-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 170px;
+  padding: 28px;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  box-shadow: 0 14px 32px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* PHASE NAME */
+.templates-list-page .phase-box h4 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #7b1e24;
+}
+
+/* SUBTITLE */
+.templates-list-page .phase-box p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #7b1e24;
+  opacity: 0.85;
+}
+
+/* HOVER */
+.templates-list-page .phase-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px rgba(123,30,36,0.35);
+}
+
+
+/* =====================================================
+   FINAL FIX – PHASE CARD TEXT (CORRECT SELECTORS)
+===================================================== */
+
+.templates-list-page .phase-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 170px;
+  padding: 28px;
+
+  background: #ffffff;          /* card bg */
+  border-radius: 16px;
+
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  box-shadow: 0 14px 32px rgba(0,0,0,0.2);
+}
+
+/* PHASE NAME */
+.templates-list-page .phase-title {
+  font-size: 20px;
+  font-weight: 800;             /* BOLD */
+  text-transform: uppercase;    /* CAPITAL */
+  letter-spacing: 0.6px;
+  color: #7b1e24;               /* DARK RED */
+  margin-bottom: 6px;
+}
+
+/* SUBTITLE */
+.templates-list-page .phase-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #7b1e24;               /* DARK RED */
+  opacity: 0.85;
+}
+/* =====================================================
+   FINAL FIX – TRUE CENTER ALIGNMENT FOR PHASE CARDS
+===================================================== */
+
+.templates-list-page .phase-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical centering */
+  align-items: center;       /* horizontal centering */
+
+  min-height: 180px;         /* ensures enough height */
+  padding: 0 24px;           /* remove vertical padding that breaks centering */
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  box-shadow: 0 14px 32px rgba(0,0,0,0.2);
+}
+
+/* Phase title */
+.templates-list-page .phase-title {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+/* Subtitle */
+.templates-list-page .phase-subtitle {
+  margin-top: 6px;
+  line-height: 1.4;
+}
+/* =====================================================
+   TEMPLATE PHASE PAGE – SAME BACKGROUND
+===================================================== */
+
+.templates-phase-page {
+  min-height: 100vh;
+  padding: 140px 60px 120px;
+
+  background:
+    url("assets/tbg.png");
+
+}
+/* =====================================================
+   INSIGHTS PAGE – Project Casestudies
+===================================================== */
+
+.insights-page {
+  padding: 160px 60px 120px;
+  min-height: 100vh;
+  background:
+    url("assets/inbg.png") center / cover no-repeat;
+}
+.projects-grid {
+  align-items: start;   /* 🔑 PREVENT ALL CARDS FROM STRETCHING */
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.insights-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.insights-header h1 {
+  font-size: 40px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin-bottom: 10px;
+}
+
+.insights-header p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 75px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   PROJECT CARD (FIXED SIZE)
+===================================================== */
+
+.project-card {
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 16px 34px rgba(0,0,0,0.15);
+  transition: opacity 0.3s ease;
+}
+
+/* =====================================================
+   TOP SECTION (BANNER + TITLE)
+===================================================== */
+
+.card-top {
+  cursor: pointer;
+}
+
+/* Banner – first half */
+.project-banner {
+  height: 140px;
+  width: 100%;
+}
+
+.project-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title – second half */
+.project-title {
+  height: 70px;
+  background: #b40510;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   DETAILS (TOGGLE VISIBILITY – NO RESIZE)
+===================================================== */
+
+/* Reduce padding – remove excess space */
+.project-details {
+  padding: 14px 18px 18px;
+}
+
+/* One-line row layout */
+.detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Text block */
+.detail-text h4 {
+  margin: 0 0 2px 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #7b1e24;
+}
+
+.detail-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Divider */
+.detail-divider {
+  height: 1px;
+  background: #e6e6e6;
+  margin: 12px 0;
+}
+
+/* Button refinement */
+.view-btn {
+  background: #7b1e24;
+  color: #ffffff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.view-btn:hover {
+  background: #65171c;
+}
+
+/* Remove any inherited margins that cause gaps */
+.project-details * {
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   ACTIVE / DIM STATES
+===================================================== */
+
+.project-card.dim {
+  opacity: 0.35;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .insights-page {
+    padding: 140px 20px 100px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =====================================================
+   COLLAPSED vs ACTIVE CARD BEHAVIOR
+===================================================== */
+
+/* Details hidden by default */
+.project-details {
+  display: none;
+}
+
+/* Show details ONLY for active card */
+.project-card.active .project-details {
+  display: block;
+}
+
+/* Prevent card stretching */
+.project-card {
+  align-self: flex-start;
+}
+
+/* Dim non-active cards */
+.project-card.dim {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Active card stays fully visible */
+.project-card.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* =====================================================
+   COMMON TEMPLATES SECTION
+===================================================== */
+
+.common-templates {
+  max-width: 1200px;
+  margin: 0 auto 70px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 26px 30px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+.common-templates h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #7b1e24;
+  margin-bottom: 18px;
+}
+
+/* Template rows */
+.template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.template-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #fafafa;
+  border: 1px solid #a71a1a;
+}
+
+/* Left info */
+.template-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.template-info i {
+  font-size: 22px;
+  color: #7b1e24;
+}
+
+.template-info h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #7b1e24;
+}
+
+.template-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Actions */
+.template-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Reuse buttons */
+.preview-btn {
+  border: 1.5px solid #7b1e24;
+  color: #7b1e24;
+  background: #ffffff;
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.preview-btn:hover {
+  background: #f6eaea;
+}
+
+.download-btn {
+  background: #7b1e24;
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 18px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  background: #65171c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .template-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .template-actions {
+    align-self: flex-end;
+  }
+}
+
+
+
+/* =====================================================
+   GOVERNANCE ENABLEMENT – FINAL
+===================================================== */
+
+/* =====================================================
+   GOVERNANCE ENABLEMENT
+===================================================== */
+
+.enablement-page {
+  padding: 160px 40px 120px;
+  background: url("assets/homebg.jpg") center / cover no-repeat;
+  min-height: 100vh;
+}
+
+/* INTRO */
+.enablement-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.enablement-intro h1 {
+  font-size: 44px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.enablement-intro p {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* PROJECT TYPE */
+.project-type h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.project-type-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+/* PROJECT CARDS */
+.project-card {
+  width: 420px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 50px 30px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  transition: all 0.4s ease;
+}
+
+.project-card i {
+  font-size: 42px;
+  color: #7b1e24;
+  margin-bottom: 14px;
+}
+
+.project-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #7b1e24;
+}
+
+/* ACTIVE / FADED STATES */
+.project-card.active {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(123,30,36,0.45);
+}
+
+.project-card.faded {
+  opacity: 0.35;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+/* GOVERNANCE SECTIONS */
+.governance-sections {
+  display: none;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* GOV CARDS */
+.gov-card {
+  width: 360px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 26px;
+  text-align: center;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gov-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px rgba(123,30,36,0.35);
+}
+
+.gov-card i {
+  font-size: 34px;
+  color: #7b1e24;
+  margin-bottom: 12px;
+}
+
+.gov-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #7b1e24;
+}
+
+.gov-card p {
+  font-size: 15px;
+  color: #333;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .project-type-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .governance-sections {
+    flex-direction: column;
+  }
+}
+
+/* =========================================
+   SWITCHING FIX – ALLOW CLICK ON FADED CARD
+========================================= */
+
+.project-card.faded {
+  opacity: 0.35;
+  transform: scale(0.95);
+  pointer-events: auto; /* 🔑 allow clicking */
+  cursor: pointer;
+}
+
+/* =========================================
+   GOVERNANCE CARD SPACING IMPROVEMENTS
+========================================= */
+
+/* Default */
+.governance-sections {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+/* SAP → two cards (How To + Critical) */
+.governance-sections.two-cards {
+  gap: 80px;                 /* 🔥 more breathing room */
+}
+
+/* Non-SAP → single card */
+.governance-sections.one-card {
+  gap: 0;
+}
+
+/* Optional visual polish */
+.gov-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* =====================================================
+   BLOG PAGE
+===================================================== */
+
+.blog-page {
+  padding: 160px 60px 120px;
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.blog-header {
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.blog-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #7b1e24;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #7b1e24;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.blog-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+.blog-content h2 {
+  color: #7b1e24;
+  margin-top: 30px;
+}
+
+.blog-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+}
+/* =====================================================
+   TOOLS ENABLEMENT
+===================================================== */
+
+.tools-page {
+  padding: 160px 60px 120px;
+  background: url('assets/enabg.png');
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tool-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.tool-card h3 {
+  color: #7b1e24;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.tool-card video {
+  width: 100%;
+  border-radius: 12px;
+}
+/* =====================================================
+   GOVERNANCE BLOG PAGES (HOW TO / CRITICAL)
+===================================================== */
+
+.blog-page {
+  padding: 160px 80px 120px;
+  background: url('assets/enabg.png');
+  min-height: 100vh;
+}
+
+/* Header */
+.blog-header {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog-header h1 {
+  font-size: 38px;
+  font-weight: 900;
+  color: #7b1e24;
+  text-align: center;
+  flex: 1;
+}
+
+/* Back button */
+.back-btn {
+  padding: 10px 18px;
+  border: 2px solid #7b1e24;
+  color: #7b1e24;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Blog container – FULL WIDTH FEEL */
+.blog-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 70px 90px;
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+
+/* Sections */
+.blog-content h2 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #7b1e24;
+  margin: 50px 0 16px;
+}
+
+.blog-content p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 18px;
+}
+
+/* Lists */
+.blog-content ul {
+  margin: 10px 0 30px 20px;
+}
+
+.blog-content li {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .blog-page {
+    padding: 140px 20px 100px;
+  }
+
+  .blog-content {
+    padding: 40px 30px;
+  }
+
+  .blog-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* ===== ORG PAGE ===== */
+.org-page {
+  padding: 160px 40px 120px;
+  background:url("assets/homebg.jpg");
+}
+
+.org-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 60px;
+}
+
+/* ===== ORG CHART ===== */
+.org-chart {
+  max-width: 1500px;
+  margin: auto;
+  text-align: center;
+}
+
+/* LEVEL */
+.level {
+  display: flex;
+  justify-content: center;
+}
+
+/* LEVEL 3 */
+.level-3 {
+  position: relative;
+  margin-top: 30px;
+}
+
+/* BRANCHES */
+.branches {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  align-items: start;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+/* BRANCH */
+.branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.branch > .connector.vertical.short {
+  height: 26px;
+  margin: 0 0 8px 0;
+  background: #fff;
+}
+
+
+/* CONNECTORS */
+.connector.vertical {
+  width: 2px;
+  height: 40px;
+  background: #ffffff;
+  margin: 12px auto;
+}
+
+.connector.vertical.short {
+  height: 50px;
+  height: 40px;
+  margin: 20px auto;
+}
+
+.connector.horizontal {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: #fff9f9;
+}
+
+/* CARDS */
+.card,
+.sub-card {
+  background: #fff;
+  border: 1.5px solid #333;
+  border-radius: 6px;
+  padding: 10px 14px;
+  width: 220px;
+  transition: all 0.25s ease;
+}
+
+.name {
+  font-weight: 800;
+  color: #a00000;
+}
+
+.role {
+  font-size: 12px;
+  color: #333;
+}
+
+/* GROUP BOX */
+.group-box {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+}
+
+.group-box.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* HOVER */
+.card:hover,
+.sub-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+/* Connector from Level-3 card to group box */
+.connector.to-group {
+  height: 16px;
+  margin: 4px auto 0;
+}
+/* ================= GROUP BOX ================= */
+
+.group-box {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;               /* ✅ THIS fixes Indu & Kishore spacing */
+}
+
+/* Dilip uses grid */
+.group-box.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+/* ================= SUB CARDS ================= */
+
+.sub-card {
+  width: 100%;             /* ✅ forces equal width */
+  max-width: 230px;
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover effect (already working, but normalized) */
+.sub-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+/* Name & role styling consistency */
+.sub-card .name {
+  font-weight: 800;
+  color: #a00000;
+  font-size: 13px;
+}
+
+.sub-card .role {
+  font-size: 11.5px;
+  color: #333;
+}
